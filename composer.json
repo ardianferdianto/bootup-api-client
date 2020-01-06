@@ -26,5 +26,10 @@
     "psr-4": {
       "BootUP\\Client\\": "src/"
     }
+  },
+  "laravel": {
+      "providers": [
+          "BootUP\\Client\\ServiceProvider"
+      ]
   }
 }
