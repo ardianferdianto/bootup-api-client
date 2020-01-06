@@ -14,6 +14,7 @@ class EndpointBuilder
     private $endpoint;
     private $include;
     private $search;
+    private $condition = [];
 
     /**
      * EndpointBuilder constructor.
@@ -50,6 +51,14 @@ class EndpointBuilder
         if($this->search) {
             $params[] = 'search=' . implode(';', $this->searchBuilder($this->search));
         }
+        if(!empty($this->condition)) {
+            foreach ($this->condition as $key => $condition){
+                $col = $condition['column'];
+                $operator = $condition['operator'];
+                $value = $condition['value'];
+                $params[] = "condition[$col][$operator]=$value";
+            }
+        }
         $params = implode('&', $params);
         return $url.'?'.$params;
     }
@@ -62,5 +71,11 @@ class EndpointBuilder
         }
 
         return $search;
+    }
+
+    public function addCondition($key, $operator, $value)
+    {
+        array_push($this->condition, ["column" => $key, "operator" => $operator, "value" => $value]);
+        return $this;
     }
 }
