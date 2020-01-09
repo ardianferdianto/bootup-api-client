@@ -15,6 +15,7 @@ class EndpointBuilder
     private $include;
     private $search;
     private $condition = [];
+    private $orCondition = [];
 
     /**
      * EndpointBuilder constructor.
@@ -59,6 +60,14 @@ class EndpointBuilder
                 $params[] = "condition[$col][$operator]=$value";
             }
         }
+        if(!empty($this->orCondition)) {
+            foreach ($this->orCondition as $key => $condition){
+                $col = $condition['column'];
+                $operator = $condition['operator'];
+                $value = $condition['value'];
+                $params[] = "or[$col][$operator]=$value";
+            }
+        }
         $params = implode('&', $params);
         return $url.'?'.$params;
     }
@@ -74,6 +83,12 @@ class EndpointBuilder
     }
 
     public function addCondition($key, $operator, $value)
+    {
+        array_push($this->condition, ["column" => $key, "operator" => $operator, "value" => $value]);
+        return $this;
+    }
+
+    public function addOrCondition($key, $operator, $value)
     {
         array_push($this->condition, ["column" => $key, "operator" => $operator, "value" => $value]);
         return $this;
