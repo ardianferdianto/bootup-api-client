@@ -8,6 +8,8 @@
 
 namespace BootUP\Client;
 
+use BootUP\Client\Entity\CourseContentItem;
+use BootUP\Client\Entity\Expert\InformationItem;
 use BootUP\Client\Entity\ModulItem;
 use BootUP\Client\Entity\UsersItem;
 use Swis\JsonApi\Client\Providers\TypeMapperServiceProvider as BaseTypeMapperServiceProvider;
@@ -24,7 +26,9 @@ class ServiceProvider extends BaseTypeMapperServiceProvider
     protected $items = [
         CourseItem::class,
         ModulItem::class,
-        UsersItem::class
+        UsersItem::class,
+        InformationItem::class,
+        CourseContentItem::class,
     ];
     /**
      * Register the service provider.
