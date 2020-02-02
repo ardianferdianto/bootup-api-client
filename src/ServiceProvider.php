@@ -9,6 +9,7 @@
 namespace BootUP\Client;
 
 use BootUP\Client\Entity\CourseContentItem;
+use BootUP\Client\Entity\DiscountsItem;
 use BootUP\Client\Entity\Expert\InformationItem;
 use BootUP\Client\Entity\ModulItem;
 use BootUP\Client\Entity\UsersItem;
@@ -29,6 +30,7 @@ class ServiceProvider extends BaseTypeMapperServiceProvider
         UsersItem::class,
         InformationItem::class,
         CourseContentItem::class,
+        DiscountsItem::class
     ];
     /**
      * Register the service provider.
