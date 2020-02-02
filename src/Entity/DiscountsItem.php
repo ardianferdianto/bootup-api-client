@@ -11,7 +11,7 @@ namespace BootUP\Client\Entity;
 
 class DiscountsItem extends BaseItem
 {
-    protected $type = 'discount';
+    protected $type = 'discounts';
     protected $availableRelations = [
 
     ];
