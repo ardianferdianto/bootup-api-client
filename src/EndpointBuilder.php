@@ -90,7 +90,7 @@ class EndpointBuilder
 
     public function addOrCondition($key, $operator, $value)
     {
-        array_push($this->condition, ["column" => $key, "operator" => $operator, "value" => $value]);
+        array_push($this->orCondition, ["column" => $key, "operator" => $operator, "value" => $value]);
         return $this;
     }
 }
